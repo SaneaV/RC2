@@ -24,7 +24,7 @@ public class rc2 {
 	}
 	
 	private static String[] Encrypt(String sWord, String sKey) {
-		System.out.println("Кодировка: ");
+		System.out.println("Encoding: ");
 		char[] cWord = sWord.toCharArray();
 		char[] cKey = sKey.toCharArray();
 		
@@ -111,7 +111,7 @@ public class rc2 {
 		System.out.println("a = " + a);
 		System.out.println("key = " + key + "\n");
 		
-		System.out.println("Объединяем: "+ b + c + d + a);
+		System.out.println("Combine: "+ b + c + d + a);
 		
 		String[] values = new String[5];
 		values[0] = b;
@@ -125,7 +125,7 @@ public class rc2 {
 	}
 	
 	private static String[] Descript(String[] Encripted) {
-		System.out.println("\nРаскодировка: ");
+		System.out.println("\nDecoding: ");
 		String a, b, c, d, key;
 		
 		b = Encripted[0];
@@ -185,7 +185,7 @@ public class rc2 {
 		values[2] = c;
 		values[3] = d;
 		values[4] = key;
-		System.out.println("Объединяем: "+ part6 + b + c + d+"\n");
+		System.out.println("Combine: "+ part6 + b + c + d+"\n");
 		
 		return values;
 
@@ -197,13 +197,13 @@ public class rc2 {
 	       Scanner sc = new Scanner(System.in);
 	       String word, key;
 	       do {
-	    	   System.out.print("Введите слово из 8 букв(на латинице): ");
+	    	   System.out.print("Enter an 8 letter word: ");
 		       word = sc.nextLine();
 		       
 	       }while(word.length()!=8);
 	       
 	       do {
-	    	   System.out.print("Введите кодовое слово из 2 букв (на латинице): ");
+	    	   System.out.print("Enter a 2 letter codeword: ");
 		       key = sc.nextLine();
 	       }while(key.length()!=2);
 	       
@@ -215,10 +215,9 @@ public class rc2 {
 	       
 	       for(int i=0;i<4;i++)
 	       {
-	    	   if (descriptedWord[i].length()<16) 
-	    	   {
+	    	   do {
 	    		   descriptedWord[i] = "0" + descriptedWord[i];
-	    	   }
+	    	   }while(descriptedWord[i].length()<16);
 	       }
 	       
 	       String binaryWord = descriptedWord[0] + descriptedWord[1] +
@@ -226,8 +225,8 @@ public class rc2 {
 	       String binaryKey = descriptedWord[4];
 	       
 	    	
-   		   System.out.println("Ваше защифрованное слово: " + BinaryStringToSChar(binaryWord));
-   		   System.out.println("Ваш защифрованный ключ: " + BinaryStringToSChar(binaryKey));
+   		   System.out.println("Your encrypted word: " + BinaryStringToSChar(binaryWord));
+   		   System.out.println("Your encrypted key: " + BinaryStringToSChar(binaryKey));
 		
 	}
 }
